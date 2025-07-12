@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>THT CTF TERMINAL v17 - Şifreli Dosya + İpucu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      background-color: black;
+      color: #00FF00;
+      font-family: monospace;
+      padding: 20px;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      min-height: 60vh;
+    }
+    #scoreboard {
+      margin-top: 30px;
+      background-color: #111;
+      border: 1px solid #00FF00;
+      padding: 10px;
+    }
+    input {
+      background-color: black;
+      color: #00FF00;
+      border: none;
+      font-size: 1em;
+      width: 100%;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+<div id="terminal">
+[THT CYBER CTF TERMINAL v17 - Şifreli Dosya Görevi]
+
+login kullanıcı_adı yazarak başla.
+</div>
+<input type="text" id="command" autocomplete="off" />
+<div id="scoreboard">
+  <h3>🏆 PUAN TABLOSU</h3>
+  <ul id="scores">
+    <li>Henüz kullanıcı yok.</li>
+  </ul>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
