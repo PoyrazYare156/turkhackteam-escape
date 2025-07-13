@@ -1,0 +1,23 @@
+body {
+    background: black;
+    color: lime;
+    font-family: monospace;
+    padding: 20px;
+}
+#commandInput {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    color: lime;
+    border: 1px solid lime;
+    font-family: monospace;
+    font-size: 16px;
+}
+#scoreboard {
+    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid lime;
+}
+#scoreboard h3 {
+    color: lime;
+}
