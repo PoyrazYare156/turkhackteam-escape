@@ -1,23 +1,116 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>THT CYBER CTF TERMINAL</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>THT CYBER CTF TERMINAL v17</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00FF00;
+      font-family: monospace;
+      padding: 20px;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      min-height: 200px;
+    }
+    .input-line {
+      margin-top: 10px;
+    }
+    button {
+      background-color: black;
+      color: #00FF00;
+      border: 1px solid #00FF00;
+      padding: 5px 10px;
+      margin: 10px 5px;
+      cursor: pointer;
+    }
+    #puan-tablosu {
+      border: 1px solid #00FF00;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    #puan-tablosu h3 {
+      margin: 0 0 5px 0;
+    }
+  </style>
 </head>
 <body>
-<pre id="terminal">
-[THT CYBER CTF TERMINAL v17 – Şifreli Dosya Görevi]
-
+  <div id="terminal">
+[THT CYBER CTF TERMINAL v17 - Şifreli Dosya Görevi]
 login kullanıcı_adı yazarak başla.
+  </div>
 
-Komut girin:
-</pre>
-<input type="text" id="commandInput" autofocus autocomplete="off" placeholder="Komut girin..." />
-<div id="scoreboard">
+  <div class="input-line">
+    <span>&gt; </span><input type="text" id="commandInput" autofocus/>
+    <button onclick="processCommand()">Gönder</button>
+  </div>
+
+  <div>
+    <button onclick="goBack()">⬅️ Geri</button>
+    <button onclick="goNext()">➡️ İleri</button>
+  </div>
+
+  <div id="puan-tablosu">
     <h3>🏆 PUAN TABLOSU</h3>
-    <ul id="scoreList"><li>Henüz kullanıcı yok.</li></ul>
-</div>
-<script src="script.js"></script>
+    <ul id="puanListesi">
+      <li>Henüz kullanıcı yok.</li>
+    </ul>
+  </div>
+
+<script>
+  const terminal = document.getElementById("terminal");
+  const commandInput = document.getElementById("commandInput");
+  const puanListesi = document.getElementById("puanListesi");
+  let currentStep = 0;
+  let steps = [
+    "login kullanici1",
+    "ls",
+    "cd sifreli_dosya",
+    "cat flag.txt",
+    "rm -rf virus.js"
+  ];
+  let terminalSteps = [
+    "[THT CYBER CTF TERMINAL v17 - Şifreli Dosya Görevi]\nlogin kullanici1 yazarak başla.",
+    "Klasörler: sifreli_dosya/ belge/ notlar/",
+    "Klasör değiştirildi: sifreli_dosya/",
+    "flag{tht_12345_ctf}",
+    "Zararlı dosya silindi. Görev başarıyla tamamlandı!"
+  ];
+
+  function processCommand() {
+    const command = commandInput.value.trim();
+    commandInput.value = "";
+
+    if (command === steps[currentStep]) {
+      terminal.innerText += "\n> " + command;
+      currentStep++;
+      terminal.innerText += "\n" + (terminalSteps[currentStep] || "Görev tamamlandı.");
+      if (currentStep === 1) updatePuan("kullanici1");
+    } else {
+      terminal.innerText += "\n> " + command;
+      terminal.innerText += "\nHatalı komut. Lütfen tekrar deneyin.";
+    }
+  }
+
+  function updatePuan(username) {
+    puanListesi.innerHTML = "<li>🥇 " + username + ": 100 puan</li>";
+  }
+
+  function goNext() {
+    if (currentStep < steps.length) {
+      commandInput.value = steps[currentStep];
+    }
+  }
+
+  function goBack() {
+    if (currentStep > 0) {
+      currentStep--;
+      terminal.innerText = terminalSteps.slice(0, currentStep + 1).join("\n");
+    }
+  }
+</script>
 </body>
 </html>
