@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<HTML dil="en">
+<KAFA>
+  <meta karakter kümesi="UTF-8"/>
+  <meta isim="görünüm"içerik="genişlik=cihaz genişliği, başlangıç ölçeği=1,0"/>
+  <başlık>Güvenlik Başlık Tarayıcısı</başlık>
+  <bağlantı ilgili="stil sayfası"href="stil.css"/>
+</KAFA>
+<vücut>
+  <bölüm sınıf="konteyner">
+    <h1>🔐 Güvenlik Başlık Tarayıcısı</h1>
+    <P>HTTP güvenlik başlıklarını taramak için bir URL girin.</P>
+    <giriş tip="metin"İD="hedefURL"yer tutucu="https://example.com"/>
+    <düğme tıklama başına="taramaBaşlıkları()">Tarama</düğme>
+    <bölüm İD="sonuç"></bölüm>
+  </bölüm>
+  <senaryo kaynak="uygulama.js"></senaryo>
+<senaryo kaynak="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></senaryo>
+
+<!-- Ek tarama alanı -->
+<bölüm sınıf="konteyner">
+  <h2>🌐 Toplu Tarama</h2>
+  <P>Birden fazla siteyi taramak için satıra bir alan adı girin:</P>
+  <metin alanı İD="topluURL'ler"yer tutucu="https://site1.com\nhttps://site2.com"satırlar="6"stil="genişlik:100%;"></metin alanı>
+  <br/>
+  <düğme tıklama başına="scanMultiple()">Tümünü Tara</düğme>
+  <bölüm İD="topluSonuçlar"></bölüm>
+  <düğme tıklama başına="CSV'yi dışa aktar()">⬇ CSV'yi dışa aktar</düğme>
+</bölüm>
+
+<bölüm İD="tarih"stil="metin-hizalama:sol; kenar boşluğu-üst:20px;"></bölüm>
+</vücut>
+</HTML>
