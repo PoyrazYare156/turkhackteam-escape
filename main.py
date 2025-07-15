@@ -16,15 +16,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Şablon klasörünü belirt
+# Şablon klasörü (HTML)
 templates = Jinja2Templates(directory="şablonlar")
 
-# Ana sayfa: dizin.html dosyasını döndürür
+# Ana sayfa – HTML yükler
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("dizin.html", {"request": request})
+    return templates.TemplateResponse("index.html", {"request": request})
 
-# Güvenlik başlıkları kontrolü
+# Header puanlama sistemi
 SECURITY_HEADERS = {
     "content-security-policy": 20,
     "strict-transport-security": 15,
@@ -34,6 +34,7 @@ SECURITY_HEADERS = {
     "permissions-policy": 10
 }
 
+# API endpoint – header taraması
 @app.get("/api/scan")
 async def scan_headers(url: str = Query(..., description="Tarama yapılacak URL")):
     try:
